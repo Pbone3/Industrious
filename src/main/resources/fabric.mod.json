@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "industrious",
+  "version": "${version}",
+  "name": "Industrious",
+  "description": "A tech mod",
+  "authors": [
+    "pbone"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/Industrious/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "dev.industrious.client.IndustriousClient"
+    ],
+    "main": [
+      "dev.industrious.Industrious"
+    ]
+  },
+  "mixins": [
+    "Industrious.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.6",
+    "fabric": "*",
+    "minecraft": "1.17.1"
+  }
+}

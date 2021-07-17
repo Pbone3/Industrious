@@ -1,0 +1,14 @@
+{
+  "_comment0": "Ingots",
+  "item.industrious.tin_ingot": "Tin Ingot",
+  "item.industrious.steel_ingot": "Steel Ingot",
+
+  "_comment1": "Raw ores",
+  "item.industrious.raw_tin": "Raw Tin",
+
+  "_comment2": "Nuggets",
+  "item.industrious.tin_nugget": "Tin Nugget",
+
+  "_igComment": "Item groups",
+  "itemGroup.industrious.industrious_materials": "Industrious: Materials"
+}
