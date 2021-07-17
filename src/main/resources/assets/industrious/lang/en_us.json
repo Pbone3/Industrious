@@ -9,6 +9,10 @@
   "_comment2": "Nuggets",
   "item.industrious.tin_nugget": "Tin Nugget",
 
+  "_comment3": "Material Storage",
+  "block.industrious.raw_tin_block": "Block of Raw Tin",
+
   "_igComment": "Item groups",
-  "itemGroup.industrious.industrious_materials": "Industrious: Materials"
+  "itemGroup.industrious.industrious_materials": "Industrious: Materials",
+  "itemGroup.industrious.industrious_blocks": "Industrious: Blocks"
 }

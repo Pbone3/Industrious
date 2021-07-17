@@ -1,9 +1,11 @@
 package dev.industrious;
 
 import dev.industrious.init.ContentRegisterer;
+import dev.industrious.init.ModBlocks;
 import dev.industrious.init.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -13,6 +15,7 @@ public class Industrious implements ModInitializer {
     public static final String MOD_ID = "industrious";
 
     public static final ModItems ITEMS = new ModItems();
+    public static final ModBlocks BLOCKS = new ModBlocks();
 
     public static final ItemGroup GROUP_MATERIALS = FabricItemGroupBuilder.create(
             new Identifier(MOD_ID, "industrious_materials"))
@@ -29,9 +32,17 @@ public class Industrious implements ModInitializer {
             })
             .build();
 
+    public static final ItemGroup GROUP_BLOCKS = FabricItemGroupBuilder.create(
+            new Identifier(MOD_ID, "industrious_blocks"))
+            .icon(() -> new ItemStack(ModBlocks.MaterialStorageBlocks.RAW_TIN))
+            .appendItems(stacks -> {
+            })
+            .build();
+
     @Override
     public void onInitialize() {
         ITEMS.RegisterContent();
+        BLOCKS.RegisterContent();
     }
 
     public static <T> void Register(ContentRegisterer<T> contentRegisterer, String id, T obj) {
@@ -40,5 +51,8 @@ public class Industrious implements ModInitializer {
 
     public static void RegisterItem(String id, Item obj) {
         Register(ITEMS, id, obj);
+    }
+    public static void RegisterBlock(String id, Block obj) {
+        Register(BLOCKS, id, obj);
     }
 }
