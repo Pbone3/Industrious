@@ -58,6 +58,7 @@ public class RecipeManagerMixin {
             }
         }
 
+        // Add the new blasting recipes
         map.putAll(newRecipes);
     }
 }

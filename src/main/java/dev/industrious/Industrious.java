@@ -3,13 +3,13 @@ package dev.industrious;
 import dev.industrious.init.ContentRegisterer;
 import dev.industrious.init.ModBlocks;
 import dev.industrious.init.ModItems;
+import dev.industrious.utils.InitUtils;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
 
 public class Industrious implements ModInitializer {
     public static final String MOD_ID = "industrious";
@@ -18,7 +18,7 @@ public class Industrious implements ModInitializer {
     public static final ModBlocks BLOCKS = new ModBlocks();
 
     public static final ItemGroup GROUP_MATERIALS = FabricItemGroupBuilder.create(
-            new Identifier(MOD_ID, "industrious_materials"))
+            InitUtils.ModId("industrious_materials"))
             .icon(() -> new ItemStack(ModItems.Ingots.TIN))
             .appendItems(stacks -> {
                 // Raw ores should always be next to the ingot
@@ -33,10 +33,8 @@ public class Industrious implements ModInitializer {
             .build();
 
     public static final ItemGroup GROUP_BLOCKS = FabricItemGroupBuilder.create(
-            new Identifier(MOD_ID, "industrious_blocks"))
+            InitUtils.ModId("industrious_blocks"))
             .icon(() -> new ItemStack(ModBlocks.MaterialStorageBlocks.RAW_TIN))
-            .appendItems(stacks -> {
-            })
             .build();
 
     @Override
