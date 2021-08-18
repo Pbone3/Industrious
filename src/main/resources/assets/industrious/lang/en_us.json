@@ -16,7 +16,10 @@
   "block.industrious.raw_tin_block": "Block of Raw Tin",
 
   "_comment5": "Ores",
+  "block.industrious.tin_ore": "Tin Ore",
+  "block.industrious.deepslate_tin_ore": "Deepslate Tin Ore",
   "block.industrious.ruby_ore": "Ruby Ore",
+  "block.industrious.deepslate_ruby_ore": "Deepslate Ruby Ore",
 
   "_comment6": "Machines",
   "block.industrious.machine_frame_block": "Machine Frame",

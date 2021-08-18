@@ -42,17 +42,17 @@ public class RecipeManagerMixin {
                     // Assume yes if it doesn't say anything
                     if (!jObj.has("industrious_autoBlasting") || jObj.get("industrious_autoBlasting").getAsBoolean()) {
                         // Give it an automatic blasting recipe
-                        // Straight up modify jObj as well, because I don't care about your feelings
+                        JsonObject blastingObj = JsonUtils.DeepCopy(jObj);
 
                         // Change recipe type to blasting
-                        JsonUtils.SwapJsonProperty(jObj, "type", "minecraft:blasting");
+                        JsonUtils.SwapJsonProperty(blastingObj, "type", "minecraft:blasting");
 
                         // Half cooking time
                         int cookingTime = jObj.get("cookingtime").getAsInt();
-                        JsonUtils.SwapJsonProperty(jObj, "cookingtime", cookingTime / 2);
+                        JsonUtils.SwapJsonProperty(blastingObj, "cookingtime", cookingTime / 2);
 
                         // Add it to the dictionary of recipes to register
-                        newRecipes.put(new Identifier(id.getNamespace(), id.getPath() + "_blasting"), jObj);
+                        newRecipes.put(new Identifier(id.getNamespace(), id.getPath() + "_blasting"), blastingObj);
                     }
                 }
             }

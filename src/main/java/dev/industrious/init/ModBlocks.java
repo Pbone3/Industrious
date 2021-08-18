@@ -4,7 +4,6 @@ import dev.industrious.Industrious;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
-import net.fabricmc.fabric.impl.object.builder.FabricBlockInternals;
 import net.fabricmc.yarn.constants.MiningLevels;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -63,27 +62,22 @@ public class ModBlocks extends ContentRegisterer<Block> {
     }
 
     public enum Ores implements ItemConvertible {
-        RUBY(MiningLevels.IRON);
+        RUBY(FabricBlockSettings.copyOf(OrePresets.NORMAL_ORE.Settings)
+            .breakByTool(FabricToolTags.PICKAXES, MiningLevels.IRON)),
+        DEEPSLATE_RUBY(FabricBlockSettings.copyOf(OrePresets.DEEPSLATE_ORE.Settings)
+            .breakByTool(FabricToolTags.PICKAXES, MiningLevels.IRON)),
+        TIN(FabricBlockSettings.copyOf(OrePresets.NORMAL_ORE.Settings)
+            .breakByTool(FabricToolTags.PICKAXES, MiningLevels.STONE)),
+        DEEPSLATE_TIN(FabricBlockSettings.copyOf(OrePresets.DEEPSLATE_ORE.Settings)
+            .breakByTool(FabricToolTags.PICKAXES, MiningLevels.STONE));
+
 
         public final String Name;
         public final Block Block;
 
-        Ores(int miningLevel) {
+        Ores(FabricBlockSettings settings) {
             Name = this.toString().toLowerCase(Locale.ROOT) + "_ore";
-            Block = new OreBlock(FabricBlockSettings.copyOf(Blocks.STONE)
-                    .breakByTool(FabricToolTags.PICKAXES, miningLevel)
-                    .requiresTool()
-                    .strength(3.0F, 3.0F));
-
-            Industrious.RegisterBlockAndItem(Name, Block);
-        }
-
-        Ores(float hardness, float resistance, int miningLevel) {
-            Name = this.toString().toLowerCase(Locale.ROOT) + "_ore";
-            Block = new OreBlock(FabricBlockSettings.copyOf(Blocks.STONE)
-                    .breakByTool(FabricToolTags.PICKAXES, miningLevel)
-                    .requiresTool()
-                    .strength(hardness, resistance));
+            Block = new OreBlock(settings);
 
             Industrious.RegisterBlockAndItem(Name, Block);
         }
@@ -95,6 +89,25 @@ public class ModBlocks extends ContentRegisterer<Block> {
 
         public static void Redundant() {
 
+        }
+
+        private enum OrePresets {
+            NORMAL_ORE(FabricBlockSettings.copyOf(Blocks.STONE)
+                .breakByTool(FabricToolTags.PICKAXES, MiningLevels.WOOD)
+                .requiresTool()
+                .strength(3.0F, 3.0F)),
+            DEEPSLATE_ORE(FabricBlockSettings.copyOf(NORMAL_ORE.Settings)
+                .breakByTool(FabricToolTags.PICKAXES, MiningLevels.WOOD)
+                .requiresTool()
+                .strength(4.5F, 3.0F)
+                .mapColor((MapColor.DEEPSLATE_GRAY))
+                .sounds(BlockSoundGroup.DEEPSLATE));
+
+            private final FabricBlockSettings Settings;
+
+            OrePresets(FabricBlockSettings settings) {
+                Settings = settings;
+            }
         }
     }
 

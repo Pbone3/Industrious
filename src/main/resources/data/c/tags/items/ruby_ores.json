@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "industrious:ruby_ore"
+    "industrious:ruby_ore",
+    "industrious:deepslate_ruby_ore"
   ]
 }
