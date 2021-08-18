@@ -21,6 +21,7 @@ public class ModItems extends ContentRegisterer<Item> {
         Ingots.Redundant();
         RawOre.Redundant();
         Nuggets.Redundant();
+        MiscMaterials.Redundant();
     }
 
     public enum Ingots implements ItemConvertible {
@@ -83,6 +84,32 @@ public class ModItems extends ContentRegisterer<Item> {
 
         RawOre() {
             Name = "raw_" + this.toString().toLowerCase(Locale.ROOT);
+            Item = new Item(new FabricItemSettings().group(Industrious.GROUP_MATERIALS));
+            Industrious.RegisterItem(Name, Item);
+        }
+
+        public ItemStack getStack() {
+            return new ItemStack((asItem()));
+        }
+
+        @Override
+        public Item asItem() {
+            return Item;
+        }
+
+        public static void Redundant() {
+
+        }
+    }
+
+    public enum MiscMaterials implements ItemConvertible {
+        RUBY;
+
+        public final String Name;
+        public final Item Item;
+
+        MiscMaterials() {
+            Name = this.toString().toLowerCase(Locale.ROOT);
             Item = new Item(new FabricItemSettings().group(Industrious.GROUP_MATERIALS));
             Industrious.RegisterItem(Name, Item);
         }

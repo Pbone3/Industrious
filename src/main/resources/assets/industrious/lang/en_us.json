@@ -9,10 +9,16 @@
   "_comment2": "Nuggets",
   "item.industrious.tin_nugget": "Tin Nugget",
 
-  "_comment3": "Material Storage",
+  "_comment3": "Misc Materials",
+  "item.industrious.ruby": "Ruby",
+
+  "_comment4": "Material Storage",
   "block.industrious.raw_tin_block": "Block of Raw Tin",
 
-  "_comment4": "Machines",
+  "_comment5": "Ores",
+  "block.industrious.ruby_ore": "Ruby Ore",
+
+  "_comment6": "Machines",
   "block.industrious.machine_frame_block": "Machine Frame",
 
   "_igComment": "Item groups",

@@ -19,22 +19,24 @@ public class Industrious implements ModInitializer {
 
     public static final ItemGroup GROUP_MATERIALS = FabricItemGroupBuilder.create(
             InitUtils.ModId("industrious_materials"))
-            .icon(() -> new ItemStack(ModItems.Ingots.TIN))
+            .icon(ModItems.Ingots.TIN::getStack)
             .appendItems(stacks -> {
                 // Raw ores should always be next to the ingot
                 // Nugget positions seem to be random in vanilla, I'll put them next to the ingot as well
-
                 stacks.add(ModItems.RawOre.TIN.getStack());
                 stacks.add(ModItems.Ingots.TIN.getStack());
                 stacks.add(ModItems.Nuggets.TIN.getStack());
 
                 stacks.add(ModItems.Ingots.STEEl.getStack());
+
+                // Misc materials should come after metals
+                stacks.add(ModItems.MiscMaterials.RUBY.getStack());
             })
             .build();
 
     public static final ItemGroup GROUP_BLOCKS = FabricItemGroupBuilder.create(
             InitUtils.ModId("industrious_blocks"))
-            .icon(() -> new ItemStack(ModBlocks.MaterialStorageBlocks.RAW_TIN))
+            .icon(() -> ModBlocks.MaterialStorageBlocks.RAW_TIN.asItem().getDefaultStack())
             .build();
 
     @Override
@@ -52,5 +54,8 @@ public class Industrious implements ModInitializer {
     }
     public static void RegisterBlock(String id, Block obj) {
         Register(BLOCKS, id, obj);
+    }
+    public static void RegisterBlockAndItem(String id, Block obj) {
+        BLOCKS.RegisterBlockAndItem(id, obj);
     }
 }
